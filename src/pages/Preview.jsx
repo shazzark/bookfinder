@@ -10,115 +10,201 @@ function Preview() {
   const [loading, setLoading] = useState(true);
   const [book, setBook] = useState(null);
   const [content, setContent] = useState("Loading book content...");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function loadBook() {
-      const bookData = await fetchBookDetails(bookId);
-      setBook(bookData);
-      setLoading(false);
+      try {
+        const bookData = await fetchBookDetails(bookId);
+        setBook(bookData);
 
-      let textUrl = null;
-      const formats = bookData.formats;
+        let textUrl = null;
+        const formats = bookData.formats;
 
-      for (const [key, url] of Object.entries(formats)) {
-        if (
-          (key.startsWith("text/plain") || key === "text/html") &&
-          url.includes("/files/") &&
-          url.endsWith(".txt")
-        ) {
-          textUrl = url;
-          break;
+        const preferredFormats = [
+          "text/plain; charset=utf-8",
+          "text/plain",
+          "text/plain; charset=us-ascii",
+          "text/html",
+        ];
+
+        for (const format of preferredFormats) {
+          if (formats[format]) {
+            textUrl = formats[format];
+            break;
+          }
         }
-      }
 
-      if (!textUrl) {
-        textUrl =
-          formats["text/plain; charset=utf-8"] ||
-          formats["text/plain"] ||
-          formats["text/plain; charset=us-ascii"] ||
-          formats["text/html"];
-      }
+        if (textUrl) {
+          console.log("Original text URL:", textUrl);
 
-      if (
-        textUrl &&
-        textUrl.includes("/ebooks/") &&
-        !textUrl.includes("/files/")
-      ) {
-        const bookIdMatch = textUrl.match(/\/ebooks\/(\d+)/);
-        if (bookIdMatch) {
-          const id = bookIdMatch[1];
-          textUrl = `https://www.gutenberg.org/files/${id}/${id}-0.txt`;
-        }
-      }
+          // Fix Gutenberg URL pattern
+          if (
+            textUrl.includes("gutenberg.org/ebooks") &&
+            textUrl.endsWith(".txt.utf-8")
+          ) {
+            const bookIdMatch = textUrl.match(/\/ebooks\/(\d+)/);
+            if (bookIdMatch) {
+              const id = bookIdMatch[1];
+              textUrl = `https://www.gutenberg.org/files/${id}/${id}-0.txt`;
+              console.log("Converted text URL:", textUrl);
+            }
+          }
 
-      if (textUrl) {
-        try {
+          try {
+            // Try direct fetch
+            console.log("Attempting direct fetch:", textUrl);
+            const directResponse = await fetch(textUrl, {
+              redirect: "follow",
+            });
+
+            if (directResponse.ok) {
+              const text = await directResponse.text();
+              setContent(
+                text.slice(0, 5000) + (text.length > 5000 ? "..." : "")
+              );
+              return;
+            }
+          } catch (err) {
+            console.warn("Direct fetch failed, falling back to proxy");
+          }
+
+          // Use proxy as fallback
+          console.log("Trying proxy fetch...");
           const proxyUrl =
             "http://localhost:5000/proxy?url=" + encodeURIComponent(textUrl);
 
-          console.log("Available formats:", bookData.formats);
-          console.log("Using textUrl:", textUrl);
+          const proxyResponse = await fetch(proxyUrl);
 
-          const response = await fetch(proxyUrl);
-
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+          if (!proxyResponse.ok) {
+            throw new Error(
+              `Proxy failed with status: ${proxyResponse.status}`
+            );
           }
 
-          const text = await response.text();
-          setContent(text.slice(0, 5000));
-        } catch (error) {
-          console.error("Content fetch failed:", error);
-          setContent(`Failed to load content: ${error.message}`);
+          const text = await proxyResponse.text();
+          setContent(text.slice(0, 5000) + (text.length > 5000 ? "..." : ""));
+        } else {
+          setError("No readable format available.");
         }
-      } else {
-        setContent("No readable content available.");
+      } catch (error) {
+        console.error("Fetch error:", error);
+        setError(`Failed to load content: ${error.message}`);
+      } finally {
+        setLoading(false);
       }
     }
 
-    loadBook(); // <== CALL IT HERE!
+    loadBook();
   }, [bookId]);
 
-  if (loading) return <p>Loading...</p>;
-  if (!book) return <p>Book not found.</p>;
+  if (loading)
+    return <div className={styles.loading}>Loading book details...</div>;
+  if (error) return <div className={styles.error}>Error: {error}</div>;
+  if (!book) return <div className={styles.error}>Book not found.</div>;
 
   return (
-    <main>
+    <main className={styles.main}>
       <section className={styles.sectionPreview}>
         <div className={styles.logoContainer}>
           <Logo />
         </div>
 
-        <div className={styles.genreListContainer}>
+        <div className={styles.navContainer}>
           <Link to="/" className={styles.backLink}>
             <IoMdArrowBack className={styles.icon} />
-            <p>Back to genre</p>
+            <span>Back to genre</span>
           </Link>
-          <p className={styles.pel}>Book Details</p>
+          <h1 className={styles.pageTitle}>Book Details</h1>
         </div>
 
         <div className={styles.container}>
-          <div className={styles.grid2cols}>
-            <div>
+          <div className={styles.gridContainer}>
+            <div className={styles.bookDetails}>
               <img
                 src={book.formats?.["image/jpeg"] || "/placeholder-cover.jpg"}
-                alt={book.title}
+                alt={`Cover of ${book.title}`}
                 className={styles.bookCover}
+                onError={(e) => {
+                  e.target.src = "/placeholder-cover.jpg";
+                }}
               />
-              <h2>{book.title}</h2>
-              <p>
-                <strong>Author:</strong>{" "}
-                {book.authors?.[0]?.name || "Unknown Author"}
-              </p>
-              <p>
-                <strong>Subjects:</strong>{" "}
-                {book.subjects?.join(", ") || "No subjects listed"}
-              </p>
+              <div className={styles.bookMeta}>
+                <h2 className={styles.bookTitle}>{book.title}</h2>
+                <p className={styles.bookAuthor}>
+                  <strong>Author:</strong>{" "}
+                  {book.authors?.map((a) => a.name).join(", ") ||
+                    "Unknown Author"}
+                </p>
+                {book.subjects?.length > 0 && (
+                  <div className={styles.bookSubjects}>
+                    <strong>Subjects:</strong>
+                    <div className={styles.subjectTags}>
+                      {book.subjects.slice(0, 5).map((subject, index) => (
+                        <span key={index} className={styles.subjectTag}>
+                          {subject}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {book.bookshelves?.length > 0 && (
+                  <div className={styles.bookShelves}>
+                    <strong>Bookshelves:</strong>
+                    <div className={styles.shelfTags}>
+                      {book.bookshelves.slice(0, 3).map((shelf, index) => (
+                        <span key={index} className={styles.shelfTag}>
+                          {shelf}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {book.download_count && (
+                  <p className={styles.downloadCount}>
+                    <strong>Downloads:</strong>{" "}
+                    {book.download_count.toLocaleString()}
+                  </p>
+                )}
+              </div>
             </div>
 
-            <div className={styles.textPreview}>
-              <h3>Excerpt</h3>
-              <pre className={styles.bookText}>{content}</pre>
+            <div className={styles.bookContent}>
+              <h3 className={styles.excerptTitle}>Excerpt</h3>
+              <div className={styles.contentScroll}>
+                <pre className={styles.bookText}>{content}</pre>
+                {content.endsWith("...") && (
+                  <p className={styles.contentNote}>
+                    Content truncated - download full text to read more
+                  </p>
+                )}
+              </div>
+              {book.formats && (
+                <div className={styles.downloadLinks}>
+                  <h4>Download Options:</h4>
+                  <div className={styles.formatLinks}>
+                    {Object.entries(book.formats)
+                      .filter(
+                        ([format]) =>
+                          format.startsWith("text/") ||
+                          format.includes("epub") ||
+                          format.includes("pdf")
+                      )
+                      .slice(0, 5)
+                      .map(([format, url]) => (
+                        <a
+                          key={format}
+                          href={url}
+                          className={styles.formatLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {format.split(";")[0]}
+                        </a>
+                      ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

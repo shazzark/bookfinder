@@ -12,9 +12,9 @@ function PageNav() {
           <NavLink to="/">Home</NavLink>
         </li>
 
-        <li className={styles.mainNavLink}>
+        {/* <li className={styles.mainNavLink}>
           <NavLink to="/Pricing">pricing</NavLink>
-        </li>
+        </li> */}
 
         <li className={styles.mainNavLink}>
           <NavLink to="/Product">product</NavLink>

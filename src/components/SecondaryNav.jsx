@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { CiShoppingCart } from "react-icons/ci";
+// import { CiShoppingCart } from "react-icons/ci";
 import styles from "./SecondaryNav.module.css";
 
 function SecondaryNav() {
@@ -12,11 +12,11 @@ function SecondaryNav() {
           </NavLink>
         </li>
 
-        <li>
+        {/* <li>
           <NavLink>
             <CiShoppingCart color="#333" size={24} />
           </NavLink>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
