@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
+
+.Logo {
+  font-family: "Poetsen One", sans-serif;
+  /* font-size: 2.5rem; */
+  font-size: 3.4rem;
+
+  font-family: 500;
+  /* height: 2.2rem; */
+  text-transform: uppercase;
+  color: #82814c;
+  transition: all 0.3s;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  /* justify-content: center; */
+}
+a {
+  text-decoration: none;
+}

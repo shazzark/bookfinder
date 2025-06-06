@@ -1,0 +1,211 @@
+.productSection {
+  padding: 9.6rem 0;
+  padding-top: 4.6rem;
+  /* height: 100vh; */
+}
+
+.container {
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+.grid2cols {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 4rem;
+}
+
+.firstGrid {
+  display: flex;
+  position: sticky;
+  top: 0;
+
+  flex-direction: column;
+  /* justify-content: center; */
+  gap: 3rem;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.06);
+  padding: 3rem;
+  /* overflow: auto; */
+
+  height: 100vh; /* Make it full viewport height */
+  overflow-y: auto; /* Add scroll if content overflows */
+  /* height: 45rem; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.firstGrid ul {
+  list-style: none;
+  cursor: pointer;
+}
+
+.firstGrid li {
+  font-size: 1.2rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.NavLink {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.diviconnav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.4rem;
+}
+
+.icon {
+  height: 2.4rem;
+  width: 2.4rem;
+  color: #82814c;
+}
+
+.padding {
+  padding: 2rem;
+  margin-bottom: 0;
+  gap: 0;
+}
+
+.grid3cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  padding: 6rem;
+  padding-top: 2rem;
+}
+
+.headindContainer {
+  padding: 2rem;
+}
+
+.bookImage {
+  width: 100%;
+  height: 30rem;
+}
+
+.bookContainer {
+  margin-bottom: 3rem;
+  height: 30rem;
+}
+
+.grid3cols h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  /* border-bottom: 1px solid #777; */
+
+  /* margin-bottom: 5rem; */
+}
+
+.titlecontainer {
+  height: 6rem;
+  margin-bottom: 3rem;
+  /* border-bottom: 1px solid #777; */
+}
+
+.rating {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #777;
+  /* border-top: 1px solid #777; */
+}
+
+.ratingIcon {
+  height: 2.4rem;
+  width: 2.4rem;
+  color: #82814c;
+  cursor: pointer;
+}
+
+.ratingIcon:hover {
+  fill: yellow;
+}
+
+.btna:link,
+.btna:visited {
+  display: inline-block;
+  /* background-color: #eaead3; */
+  background-color: rgba(130, 129, 76, 0.413);
+  font-size: 1.3rem;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.06);
+}
+
+button {
+  border: none;
+  display: inline-block;
+}
+
+.btn {
+  display: inline-block;
+  /* background-color: #eaead3; */
+  font-size: 1.3rem;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 11px;
+  /* text-align: center; */
+  text-decoration: none;
+  cursor: pointer;
+  /* box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.06); */
+  background-color: rgba(130, 129, 76, 0.613);
+}
+
+.bookActions {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  border-radius: 5px;
+}
+
+.bookActionsIcon {
+  height: 2.4rem;
+  width: 2.4rem;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.06);
+  /* padding: 2rem; */
+  /* background-color: #82814c; */
+  border-radius: 3px;
+}
+
+.secondGrid {
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.boreder {
+  border-bottom: 1px solid #777;
+}
+
+.display {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.icon2 {
+  height: 1.5rem;
+  color: #82814c;
+}
+
+.grid2div {
+  position: relative;
+}
+
+.btn:nth-child(2) {
+  position: absolute;
+  right: 0; /* Moves it to the far right */
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+}

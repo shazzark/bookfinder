@@ -1,0 +1,62 @@
+.FaqSection {
+  padding: 9.6rem 0;
+}
+
+.container {
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+.FaqTextcontainer {
+  margin-bottom: 4rem;
+}
+
+.FaqTextcontainer h1 {
+  font-size: 4rem;
+  font-weight: 500;
+  color: #333;
+  letter-spacing: -0.5;
+  line-height: 1.3;
+}
+
+.heroContainer {
+  padding: 3rem;
+  color: #333;
+}
+
+.heroContainer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.heroContainer li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 3rem;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.06);
+  padding: 3rem;
+  border-radius: 9px;
+}
+
+.iconD {
+  height: 2.4rem;
+  width: 2.4rem;
+  color: #82814c;
+  cursor: pointer;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.heroContainer h2 {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.heroContainer p {
+  font-size: 1.5rem;
+  font-family: 400;
+  line-height: 1.05;
+}

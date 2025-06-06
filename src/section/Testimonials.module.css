@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+
+.TestimonialSection {
+  padding: 9.6rem 0;
+}
+
+.TestimonialsHero {
+  position: relative;
+  padding-bottom: 4rem;
+}
+
+.textContainer {
+  position: relative;
+  /* margin-bottom: 4rem; */
+}
+
+.textContainer h1 {
+  position: relative;
+  font-size: 2rem;
+  font-weight: 400;
+  left: 34rem;
+  font-family: "Noto Serif", serif;
+  color: #777;
+}
+
+.textContainer strong {
+  position: relative;
+  /* left: 3rem; */
+  font-size: 5rem;
+  bottom: 1.3rem;
+  font-weight: 700;
+  color: #777;
+}
+
+.textContainer span {
+  position: relative;
+  bottom: 8.5rem;
+  left: 8rem;
+  font-size: 10rem;
+  color: #333;
+}
+
+.container {
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.testimonialsgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+  margin-bottom: 4rem;
+}
+
+.image {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+}
+
+.testimonialcard {
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.reviewH1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5;
+  line-height: 1.01;
+  margin-bottom: 2rem;
+}
+
+.reviewP {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.reviewDiv {
+  display: flex;
+  gap: 2rem;
+}
+
+.reviewDiv h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.buttonDiv {
+  /* max-width: 120rem; */
+  display: flex;
+  gap: 3rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.6rem;
+  margin-top: 4rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 9px;
+
+  background: transparent;
+  border: 2px solid #333; /* Or your preferred color */
+  /* border-radius: 50%; */
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buttonIcon {
+  height: 2.4rem;
+  width: 2.4rem;
+  color: #333;
+}
+
+.button:hover {
+  background: #f0f0f0; /* Hover effect */
+  transform: scale(1.05);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.slideIn {
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

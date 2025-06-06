@@ -1,0 +1,48 @@
+.secondaryNavList {
+  list-style: none;
+  display: flex;
+  gap: 3.2rem;
+
+  align-items: center;
+}
+
+.secondaryNavLink a:link,
+.secondaryNavLink a:visited {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+}
+
+.secondaryNavLink a:hover,
+.secondaryNavLink a:active {
+  color: #eaead3;
+}
+
+.nav a:global(.active) {
+  color: var(--color-brand--2);
+}
+
+.ctaLink a:link,
+.ctaLink a:visited {
+  background-color: var(--color-light--3);
+  color: var(--color-dark--0);
+  padding: 0.8rem 2rem;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+}
+
+.ctaLink {
+  background-color: var(--color-light--3);
+  color: var(--color-dark--0);
+  padding: 0.8rem 2rem;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+}

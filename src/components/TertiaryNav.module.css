@@ -1,0 +1,90 @@
+.TertiaryNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0;
+  padding-right: 9rem;
+  padding-left: 9rem;
+  padding-bottom: 0;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.TertiaryNavList {
+  list-style: none;
+  display: flex;
+  gap: 3.2rem;
+
+  align-items: center;
+}
+
+.TertiaryNavGroup {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.TertiaryNavLink a :link,
+.TertiaryNavLink a :visited {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+}
+
+.TertiaryNavLink :hover,
+.TertiaryNavLink :active {
+  color: #eaead3;
+}
+
+.TertiaryNavLink :link,
+.TertiaryNavLink :visited {
+  color: #333;
+  font-weight: 500;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.searchInput {
+  padding: 0.5rem 1rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 0.9rem;
+  min-width: 40rem;
+}
+
+.TertiaryNavList a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.TertiaryNavList a:hover {
+  color: #82814c;
+}
+
+.select {
+  padding: 0.5rem;
+
+  background-color: #82814c;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  background-color: #f8f9fa;
+  color: #333;
+  cursor: pointer;
+}
+
+.option {
+  font-size: 1.2rem;
+  background-color: #fff;
+  line-height: 1.05;
+  letter-spacing: -0.5;
+  cursor: pointer;
+}

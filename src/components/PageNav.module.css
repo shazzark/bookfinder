@@ -1,0 +1,68 @@
+/* .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.nav a:link,
+.nav a:visited {
+  text-decoration: none;
+  color: var(--color-light--2);
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* CSS Modules feature */
+.nav a:global(.active) {
+  color: var(--color-brand--2);
+}
+
+.ctaLink a:link,
+.ctaLink a:visited {
+  background-color: var(--color-light--3);
+  color: var(--color-dark--0);
+  padding: 0.8rem 2rem;
+  border-radius: 7px;
+}
+
+.mainNavList {
+  list-style: none;
+  display: flex;
+  gap: 3.2rem;
+
+  align-items: center;
+}
+
+.Mainnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  padding-bottom: 0;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mainNavLink a:link,
+.mainNavLink a:visited {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+}
+
+.mainNavLink a:hover,
+.mainNavLink a:active {
+  color: #eaead3;
+}

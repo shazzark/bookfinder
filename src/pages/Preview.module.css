@@ -1,0 +1,68 @@
+.sectionPreview {
+  padding: 9.6rem 0;
+  padding-top: 3rem;
+}
+
+.logoContainer {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  /* padding: 1.3rem; */
+  border-radius: 9px;
+  max-width: 150rem;
+  padding: 0 3.2rem;
+  border: 1px;
+  margin: 0 auto;
+  margin-bottom: 1.2rem;
+}
+
+.genreListContainer {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  /* padding: 2rem; */
+  border-radius: 9px;
+  border: 1px;
+  max-width: 150rem;
+  padding: 0 2.2rem;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+}
+
+.iconGenreList p {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: #777;
+  cursor: pointer;
+}
+
+.pel {
+  font-size: 1.5rem;
+  margin-left: 1.3rem;
+  font-weight: 500;
+}
+
+.grid2cols {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+  gap: 1.5rem;
+}
+
+.container {
+  max-width: 150rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+.bookCover {
+  width: 100%;
+  height: 40rem;
+  max-width: 40rem;
+}

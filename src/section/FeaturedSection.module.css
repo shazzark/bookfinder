@@ -1,0 +1,111 @@
+.featuresSection {
+  padding: 9.6rem 0;
+}
+
+.grid3Cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 6.4rem;
+  gap: 9.6rem;
+}
+
+.container {
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+.subHeading {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #82814c;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
+}
+
+.secondaryHeading {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+}
+
+.featuresImg {
+  width: 100%;
+  height: 23rem;
+}
+
+.featuresTitle {
+  font-size: 1.4rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 3.2rem;
+}
+
+.attribute {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.featuresAttribute {
+  font-size: 1.2rem;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 1.3rem;
+}
+
+.features {
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+  border-radius: 11px;
+  overflow: hidden;
+}
+
+.featuresContent {
+  padding: 3.2rem 4.8rem 4.8rem 4.8rem;
+}
+
+.genresList {
+  list-style: none;
+}
+
+.genresLists {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1.6rem;
+}
+
+.h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.button {
+  display: inline-block; /* Make it shrink to content width */
+  margin: auto 0; /* Center horizontally with auto left/right margins, add top margin */
+  text-align: center; /* Center text inside */
+  text-decoration: underline; /* Add underline only on the text */
+  color: #82814c; /* Match your accent color */
+  font-weight: 600;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.button:hover {
+  color: #a05a13; /* Darker shade on hover */
+  text-decoration: none; /* Optional: remove underline on hover */
+}
+
+.moreContainer {
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.6rem;
+  margin-top: 4rem;
+}
