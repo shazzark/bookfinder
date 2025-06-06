@@ -58,7 +58,7 @@ function Homepage() {
             <div className={styles.grid5cols}>
               <div className={`${styles.herocards}  ${styles.firstCard}`}>
                 <img
-                  src="/images/books1.png"
+                  src="images/books1.png"
                   alt="books"
                   className={`${styles.heroimg}`}
                 />

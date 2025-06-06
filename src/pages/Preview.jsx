@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import Logo from "../components/Logo";
-import styles from "./preview.module.css";
+// import styles from "./Preview.module.css";
+import styles from "./Preview.module.css";
 import { IoMdArrowBack } from "react-icons/io";
 import { fetchBookDetails } from "../Api/Gutendex";
 import { useEffect, useState } from "react";
