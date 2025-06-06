@@ -30,7 +30,7 @@ function Homepage() {
                 today—join us and store your favorite reads.
               </p>
               <div className={styles.btncontainer}>
-                <Link to="/app" className={`${styles.btn} ${styles.btna}`}>
+                <Link to="/Product" className={`${styles.btn} ${styles.btna}`}>
                   {" "}
                   Get started
                 </Link>
