@@ -1,7 +1,8 @@
 import Logo from "../components/Logo";
 import { NavLink } from "react-router-dom";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
-import styles from "./footer.module.css";
+// import styles from "./footer.module.css";
+import styles from "./Footer.modules.css";
 
 function Footer() {
   return (
