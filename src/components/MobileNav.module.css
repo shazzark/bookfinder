@@ -1,0 +1,116 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: white;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Hamburger button styles */
+.hamburger {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: auto; /* Ensures it stays on the right */
+}
+
+/* Navigation links (hidden by default on mobile) */
+.navLinks {
+  display: none; /* Hidden until hamburger is clicked */
+  list-style: none;
+}
+
+.navLinks.active {
+  display: flex; /* Show when active */
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1); /* Slightly tinted transparent */
+  backdrop-filter: blur(10px); /* Adds blur behind */
+  padding: 1rem;
+  gap: 1rem;
+  z-index: 999;
+}
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Hamburger Menu (Hidden on Desktop) */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Navigation Links */
+.navLinks {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  background-color: transparent;
+}
+
+.navLinks li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Mobile Menu (Hidden by Default) */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* Show hamburger on mobile */
+  }
+
+  .navLinks {
+    position: fixed;
+    top: 70px;
+    left: 70%; /* Hide off-screen */
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: transparent;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    transition: left 0.5s ease;
+  }
+
+  .navLinks.active {
+    left: 0; /* Slide in when active */
+  }
+
+  .buttonIcon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

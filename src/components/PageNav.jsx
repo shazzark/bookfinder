@@ -2,10 +2,11 @@ import { NavLink } from "react-router-dom";
 import styles from "./PageNav.module.css";
 import Logo from "./Logo";
 import SecondaryNav from "./SecondaryNav";
+import PropTypes from "prop-types";
 
-function PageNav() {
+function PageNav({ isSticky }) {
   return (
-    <nav className={styles.Mainnav}>
+    <nav className={`${styles.Mainnav} ${isSticky ? styles.sticky : ""}`}>
       <Logo />
       <ul className={styles.mainNavList}>
         <li className={styles.mainNavLink}>
@@ -32,5 +33,9 @@ function PageNav() {
     </nav>
   );
 }
+
+PageNav.propTypes = {
+  isSticky: PropTypes.bool,
+};
 
 export default PageNav;

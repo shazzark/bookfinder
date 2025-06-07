@@ -9,13 +9,42 @@ import FeaturedSection from "../section/FeaturedSection";
 import Footer from "../section/Footer";
 import Faq from "../section/Faq";
 import Testimonials from "../section/Testimonials";
+import MobileNav from "../components/MobileNav";
+import { useEffect, useState } from "react";
 
 function Homepage() {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById("hero-section");
+      if (!heroSection) return;
+
+      const rect = heroSection.getBoundingClientRect();
+      const sticky = rect.bottom <= 0;
+      console.log("hero bottom:", rect.bottom, "isSticky:", sticky);
+      setIsSticky(rect.bottom <= 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Check once on mount
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div>
       <main>
-        <PageNav />
-        <section className={styles.sectionHero}>
+        <div className={styles.desktopNav}>
+          <PageNav isSticky={isSticky} />
+        </div>
+
+        <div className={styles.mobileNav}>
+          <MobileNav isSticky={isSticky} />
+        </div>
+        <section id="hero-section" className={styles.sectionHero}>
           <div className={styles.hero}>
             <div className="hero-text-box">
               <h1 className={styles.headingprimary}>

@@ -1,29 +1,3 @@
-/* .homepage {
-  height: 100vh;
-  margin: 2.5rem;
-  padding: 2.5rem 5rem;
-  text-align: center;
-}
-
-.hompage h1 {
-  font-size: 4rem;
-}
-
-.hero {
-  grid-template-columns: 1fr 1fr;
-}
-
-.btn {
-  display: inline-block;
-  background-color: var(--color-brand--1);
-  color: var(--color-dark--1);
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 1.6rem;
-  font-weight: 600;
-  padding: 1rem 3rem;
-  border-radius: 5px;
-} */
 .sectionHero {
   background-color: #ffff;
   padding: 9.6rem 0;
@@ -33,7 +7,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  /* gap: 9.6rem; */
+  /* height: 100vh; */
 }
 .heroimg {
   width: 100%;
@@ -121,6 +95,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 2rem;
   align-items: end;
+  padding: 1.2rem;
 }
 
 .herocards {
@@ -223,4 +198,120 @@
   font-size: 1.5rem;
   font-weight: 700;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+
+.mobileNav {
+  display: none; /* Hide by default */
+}
+
+/* responsive design  */
+/* 1rem = 1em =16px */
+
+/* below 1350px */
+
+@media (max-width: 84em) {
+  .hero {
+    max-width: 120rem;
+  }
+  .headingprimary {
+    font-size: 2.4rem;
+  }
+  html {
+    font-size: 56%;
+  }
+}
+
+/* below 1044 px */
+
+@media (max-width: 65em) {
+  .fifthCard {
+    font-size: 1.2rem;
+  }
+  html {
+    font-size: 50%;
+  }
+  .grid5cols {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.3rem;
+  }
+
+  .fourthCard {
+    font-size: 1.5rem;
+  }
+}
+
+/* below 865 px */
+
+@media (max-width: 54em) {
+  html {
+    font-size: 46%;
+  }
+
+  .genrie {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .fifthCardLi {
+    font-size: 1.3rem;
+  }
+
+  .sectionHero {
+    padding-top: 3.2rem;
+  }
+
+  .grid5cols {
+    padding: 2rem;
+  }
+}
+/* below 768 px */
+
+@media (max-width: 48em) {
+  .desktopNav {
+    display: none; /* Hide on mobile */
+  }
+
+  .mobileNav {
+    display: block; /* Show on mobile */
+  }
+  .navLinks {
+    position: fixed;
+    top: 70px;
+    left: -100%; /* Hide off-screen */
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    transition: left 0.3s ease;
+  }
+
+  .navLinks.active {
+    left: 0; /* Slide in when active */
+  }
+
+  .buttonIcon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* below 559 px */
+
+@media (max-width: 35em) {
+  html {
+    font-size: 30%;
+  }
+
+  .herodescription {
+    font-size: 1.2rem;
+  }
+
+  .grid5cols {
+    font-size: 0.75rem;
+    padding: 2rem;
+  }
 }

@@ -109,3 +109,81 @@
   font-size: 1.6rem;
   margin-top: 4rem;
 }
+
+/* media queries */
+/* below 1350px */
+@media (max-width: 84em) {
+  .featuresAttribute {
+    font-size: 1rem;
+
+    gap: 1.1rem;
+  }
+}
+
+@media (max-width: 65em) {
+  html {
+    font-size: 54%;
+  }
+
+  .secondaryHeading {
+    font-size: 3rem;
+  }
+
+  .featuresTitle {
+    font-size: 1.2rem;
+  }
+
+  .featuresAttribute {
+    font-size: 1rem;
+
+    gap: 0.5rem;
+    color: #333;
+    font-weight: 400;
+  }
+
+  .grid3Cols {
+    gap: 5rem;
+  }
+
+  .secondaryHeading {
+    margin-bottom: 5rem;
+  }
+}
+
+@media (max-width: 54em) {
+  html {
+    font-size: 50%;
+  }
+
+  .secondaryHeading {
+    font-size: 2rem;
+  }
+
+  .grid3Cols {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+  }
+
+  .grid3Cols > *:last-child {
+    grid-column: 1 / -1; /* Span both columns */
+    justify-self: center; /* Center it horizontally */
+  }
+
+  .secondaryHeading {
+    margin-bottom: 3.5rem;
+  }
+}
+
+@media (max-width: 35em) {
+  .grid3Cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5rem;
+  }
+
+  .grid3Cols > *:last-child {
+    justify-self: stretch;
+    grid-column: auto;
+  }
+}

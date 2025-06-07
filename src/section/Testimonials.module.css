@@ -154,3 +154,81 @@
     opacity: 1;
   }
 }
+
+/* media queries */
+@media (max-width: 84em) {
+  html {
+    font-size: 56%;
+  }
+  .reviewP {
+    font-size: 1.31rem;
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 69em) {
+  html {
+    font-size: 50%;
+  }
+
+  .reviewP {
+    font-size: 1.01rem;
+    font-weight: 400;
+  }
+
+  .textContainer h1 {
+    position: relative;
+    font-size: 2rem;
+    font-weight: 400;
+    left: 34rem;
+    font-family: "Noto Serif", serif;
+    color: #777;
+  }
+
+  .textContainer strong {
+    position: relative;
+    /* left: 3rem; */
+    font-size: 5rem;
+    bottom: 1.3rem;
+    font-weight: 700;
+    color: #777;
+  }
+
+  .textContainer span {
+    position: relative;
+    bottom: 8.5rem;
+    left: 4rem;
+    font-size: 10rem;
+    color: #333;
+  }
+}
+
+@media (max-width: 56em) {
+  .testimonialsgrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonialsgrid > *:last-child {
+    grid-column: 1/-1; /* Resets grid span */
+    justify-self: center; /* Optional: makes last item take full width again */
+  }
+}
+
+@media (max-width: 37em) {
+  .testimonialsgrid {
+    grid-template-columns: 1fr;
+  }
+
+  .textContainer {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    text-align: center; /* Center text inside h1 */
+  }
+
+  .textContainer h1 {
+    left: 0;
+    position: none;
+  }
+}
