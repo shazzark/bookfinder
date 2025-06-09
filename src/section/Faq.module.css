@@ -48,6 +48,8 @@
   color: #82814c;
   cursor: pointer;
   transition: transform 0.3s, color 0.3s;
+  z-index: 10; /* Ensure icon stays on top */
+  position: relative; /* Needed for z-index to work */
 }
 
 .heroContainer h2 {
@@ -59,4 +61,33 @@
   font-size: 1.5rem;
   font-family: 400;
   line-height: 1.05;
+}
+
+@media (max-width: 54em) {
+  .heroContainer li {
+    grid-template-columns: 1fr min-content; /* Explicit column sizing */
+    gap: 2rem;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 48em) {
+  .FaqTextcontainer {
+    text-align: center;
+  }
+
+  .heroContainer li {
+    grid-template-columns: 1fr min-content;
+  }
+
+  .iconD {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .heroContainer,
+  .heroContainer ul,
+  .heroContainer li {
+    overflow: visible !important; /* Override any hidden overflow */
+  }
 }

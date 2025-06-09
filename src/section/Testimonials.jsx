@@ -31,7 +31,6 @@ function Testimonials() {
       <div className={styles.TestimonialsHero}>
         <div className={styles.textContainer}>
           <h1>
-            {" "}
             Trusted <br /> <strong> by 200 + </strong> <br />
             <span>people</span>
           </h1>

@@ -312,6 +312,63 @@
 
   .grid5cols {
     font-size: 0.75rem;
+    padding: 3rem;
+    gap: 1.1rem;
+  }
+}
+
+/* below 447 px */
+
+@media (max-width: 28.5em) {
+  html {
+    font-size: 20%;
+  }
+
+  .herodescription {
+    font-size: 1.2rem;
+  }
+
+  .grid5cols {
+    font-size: 0.75rem;
     padding: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .fifthCard {
+    display: none;
+  }
+
+  .headingprimary {
+    font-size: 1.5rem;
+  }
+
+  .herodescription {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 20em) {
+  .herodescription {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 23em) {
+  .herodescription {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 0.75rem;
+  }
+
+  .grid5cols {
+    font-size: 0.75rem;
+    padding: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .firstCard {
+    display: none;
   }
 }

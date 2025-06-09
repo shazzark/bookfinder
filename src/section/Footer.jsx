@@ -9,12 +9,12 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footerGrid}>
         {/* Column 1 - Logo */}
-        <div className={styles.footerColumn}>
+        <div className={`${styles.footerColumn} ${styles.footerclmn}`}>
           <Logo />
         </div>
 
         {/* Column 2 - Navigation */}
-        <div className={styles.footerColumn}>
+        <div className={`${styles.footerColumn} ${styles.footerclmn}`}>
           <h3>Navigate quick</h3>
           <ul className={styles.mainNavList}>
             <li className={styles.mainNavLink}>
@@ -36,7 +36,7 @@ function Footer() {
         </div>
 
         {/* Column 3 - Mailing List */}
-        <div className={styles.footerColumn}>
+        <div className={`${styles.footerColumn} ${styles.footerclmns}`}>
           <h3>Join our mailing list</h3>
           <p>
             Be the first to discover new book releases, exclusive author

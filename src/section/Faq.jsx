@@ -41,8 +41,13 @@ function Faq() {
               <li key={index}>
                 <h2>{item.question}</h2>
                 <IoIosAddCircleOutline
-                  onClick={() => toggleOpen(index)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleOpen(index);
+                  }}
+                  onTouchEnd={() => toggleOpen(index)}
                   className={`${styles.iconD} `}
+                  style={{ pointerEvents: "auto" }}
                 />
                 {Open === index && <p>{item.answer}</p>}
               </li>

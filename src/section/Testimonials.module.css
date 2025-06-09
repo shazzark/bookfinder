@@ -212,6 +212,33 @@
     grid-column: 1/-1; /* Resets grid span */
     justify-self: center; /* Optional: makes last item take full width again */
   }
+
+  .textContainer h1,
+  .textContainer strong,
+  .textContainer span {
+    position: static;
+    left: auto;
+    /* bottom: auto; */
+    transform: none;
+    justify-content: center;
+  }
+
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem; /* Adjust as needed */
+  }
+
+  .textContainer h1 {
+    position: static;
+    left: auto;
+    margin: 0;
+    line-height: 1.2; /* Reduce line height */
+    font-size: 1.8rem; /* Adjust font size if needed */
+  }
 }
 
 @media (max-width: 37em) {
@@ -221,14 +248,35 @@
 
   .textContainer {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-    text-align: center; /* Center text inside h1 */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem; /* Adjust as needed */
   }
 
   .textContainer h1 {
-    left: 0;
-    position: none;
+    position: static;
+    left: auto;
+    margin: 0;
+    line-height: 1.2; /* Reduce line height */
+    font-size: 1.8rem; /* Adjust font size if needed */
+  }
+
+  .textContainer strong {
+    position: static;
+    bottom: auto;
+    margin: 0;
+    line-height: 1;
+    font-size: 4rem; /* Adjust as needed */
+  }
+
+  .textContainer span {
+    position: static;
+    bottom: auto;
+    left: auto;
+    margin: 0;
+    line-height: 1;
+    font-size: 8rem; /* Adjust as needed */
   }
 }
