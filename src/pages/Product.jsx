@@ -1,6 +1,6 @@
 import styles from "./Product.module.css";
 import Logo from "../components/Logo";
-import { GENRES, fetchBookByGenre } from "../Api/Gutendex";
+import { GENRES, fetchBookByGenre, searchBooks } from "../Api/Gutendex"; // Make sure to add searchBooks to your API functions
 import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
@@ -10,9 +10,10 @@ import { CiStar } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
 import { FaBookmark } from "react-icons/fa6";
 import { IoBook } from "react-icons/io5";
+import { FaSearchPlus } from "react-icons/fa";
 
 function Product() {
-  // State for books and pagination
+  // Existing state
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [Opengenres, setOpenGenre] = useState(true);
   const [allBooks, setAllBooks] = useState([]);
@@ -26,6 +27,11 @@ function Product() {
     return saved ? JSON.parse(saved) : [];
   });
   const [showBookmarks, setShowBookmarks] = useState(false);
+
+  // New search state
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
 
   // Calculate current books to display
   const currentBooks = allBooks.slice(
@@ -47,6 +53,7 @@ function Product() {
   const handleGenreClick = async (genre) => {
     setSelectedGenre(genre);
     setShowBookmarks(false);
+    setShowSearch(false);
     fetchBooks(genre);
   };
 
@@ -64,6 +71,31 @@ function Product() {
     }
   };
 
+  // New search function
+  const handleSearch = async (searchText) => {
+    if (!searchText.trim()) {
+      // If search is empty, show the genre books again if a genre was selected
+      if (selectedGenre && !selectedGenre.startsWith("Search:")) {
+        fetchBooks(selectedGenre);
+      }
+      return;
+    }
+
+    setIsSearching(true);
+    setLoading(true);
+    try {
+      const searchResults = await searchBooks(searchText);
+      setAllBooks(searchResults);
+      setSelectedGenre(`Search: "${searchText}"`);
+      setCurrentPage(1);
+    } catch (error) {
+      console.error("Error searching books:", error);
+      setAllBooks([]);
+    } finally {
+      setLoading(false);
+      setIsSearching(false);
+    }
+  };
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
@@ -98,6 +130,7 @@ function Product() {
 
   const handleShowBookmarks = () => {
     setShowBookmarks(!showBookmarks);
+    setShowSearch(false);
     if (!showBookmarks) {
       setAllBooks(bookmarks);
       setSelectedGenre("Bookmarks");
@@ -106,8 +139,17 @@ function Product() {
     }
   };
 
+  const handleShowSearch = () => {
+    setShowSearch(!showSearch);
+    setShowBookmarks(false);
+  };
+
   useEffect(() => {
-    if (selectedGenre && selectedGenre !== "Bookmarks") {
+    if (
+      selectedGenre &&
+      selectedGenre !== "Bookmarks" &&
+      !selectedGenre.startsWith("Search:")
+    ) {
       fetchBooks(selectedGenre);
     }
   }, [selectedGenre]);
@@ -135,6 +177,13 @@ function Product() {
                 >
                   <FaBookmark className={styles.icon} />
                   Bookmark {bookmarks.length > 0 && `(${bookmarks.length})`}
+                </div>
+              </li>
+
+              <li>
+                <div className={styles.diviconnav} onClick={handleShowSearch}>
+                  <FaSearchPlus className={styles.icon} />
+                  Search
                 </div>
               </li>
 
@@ -168,14 +217,40 @@ function Product() {
             </ul>
           </div>
           <div className={styles.secondGrid}>
+            {/* Search Modal */}
+            {showSearch && (
+              <div className={styles.container}>
+                <h2 className={styles.centerSearchArea}>search to see book</h2>
+                <div className={styles.searchInputWrapper}>
+                  <input
+                    type="text"
+                    placeholder="Search books by title or author..."
+                    value={searchQuery}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      handleSearch(e.target.value);
+                    }}
+                    className={styles.searchInput}
+                  />
+                  {isSearching && (
+                    <div className={styles.searchLoading}>Searching...</div>
+                  )}
+                </div>
+              </div>
+            )}
+
             <div className={styles.headindContainer}>
-              <h2>
-                {showBookmarks
-                  ? `Your Bookmarked Books (${bookmarks.length})`
-                  : selectedGenre
-                  ? `Books in ${selectedGenre} (page ${currentPage} of ${totalPages})`
-                  : "Select a genre to see books"}
-              </h2>
+              <div className={styles.headindContainer}>
+                {!showSearch && (
+                  <h2>
+                    {showBookmarks
+                      ? `Your Bookmarked Books (${bookmarks.length})`
+                      : selectedGenre
+                      ? `${selectedGenre} (page ${currentPage} of ${totalPages})`
+                      : "Select a genre to see books"}
+                  </h2>
+                )}
+              </div>
             </div>
 
             {loading ? (
@@ -187,6 +262,11 @@ function Product() {
                     <div key={book.id} className={styles.bookCard}>
                       <div className={styles.titlecontainer}>
                         <h3>{book.title}</h3>
+                        {book.authors?.length > 0 && (
+                          <p className={styles.author}>
+                            by {book.authors[0].name}
+                          </p>
+                        )}
                       </div>
                       <div className={styles.rating}>
                         <CiStar className={styles.ratingIcon} />
@@ -231,6 +311,8 @@ function Product() {
                   <div>
                     {showBookmarks
                       ? "You haven't bookmarked any books yet"
+                      : selectedGenre?.startsWith("Search:")
+                      ? "No books found matching your search"
                       : selectedGenre
                       ? "No books found for this genre"
                       : "Please select a genre to see books"}

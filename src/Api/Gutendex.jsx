@@ -44,3 +44,16 @@ export async function fetchBookDetails(bookId) {
     return null;
   }
 }
+
+export const searchBooks = async (query) => {
+  try {
+    const response = await fetch(
+      `https://gutendex.com/books/?search=${encodeURIComponent(query)}`
+    );
+    const data = await response.json();
+    return data.results || [];
+  } catch (error) {
+    console.error("Error searching books:", error);
+    return [];
+  }
+};

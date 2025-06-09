@@ -82,6 +82,54 @@
   color: #495057;
 }
 
+.searchInputWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  /* background-color: #f9f9f9; */
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.searchInput {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.searchInput:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+}
+
+.centerSearchArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.searchLoading {
+  color: #555;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.searchInput::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
 .icon2 {
   height: 1.5rem;
   color: #82814c;
@@ -337,6 +385,63 @@
 }
 
 /* BELOW 865px */
+
+/* below 1350px */
+@media (max-width: 1350px) {
+  .searchInputWrapper {
+    padding: 1.5rem;
+  }
+
+  .searchInput {
+    max-width: 90%;
+  }
+}
+
+/* below 1044px */
+@media (max-width: 1044px) {
+  .searchInput {
+    font-size: 0.95rem;
+    padding: 0.65rem 1rem;
+  }
+}
+
+/* below 865px */
+@media (max-width: 865px) {
+  .searchInputWrapper {
+    max-width: 90%;
+  }
+
+  .searchInput {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.9rem;
+  }
+}
+
+/* below 768px */
+@media (max-width: 768px) {
+  .searchInputWrapper {
+    padding: 1.2rem;
+  }
+
+  .searchInput {
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+}
+
+/* below 559px */
+@media (max-width: 559px) {
+  .searchInputWrapper {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .searchInput {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+
 @media (max-width: 54.0625em) {
   .grid3cols {
     grid-template-columns: 1fr;
