@@ -268,3 +268,180 @@
   color: #495057;
   padding: 4rem 0;
 }
+
+/* responsive design  */
+/* 1rem = 1em =16px */
+
+/* below 1350px */
+/* Below 1350px */
+@media (max-width: 84.375em) {
+  .grid3cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Below 900px (Tablet) */
+@media (max-width: 56.25em) {
+  .grid2cols {
+    grid-template-columns: 1fr;
+  }
+
+  .firstGrid {
+    position: relative;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+/* Below 600px (Mobile) */
+/* BELOW 1350px (Large tablets/smaller desktops) */
+@media (max-width: 84.375em) {
+  .grid3cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bookCard {
+    padding: 1.6rem;
+  }
+
+  .headindContainer h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* BELOW 1044px */
+@media (max-width: 65.25em) {
+  .grid2cols {
+    grid-template-columns: 1fr;
+  }
+
+  .firstGrid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+    position: static;
+    padding: 2rem;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .secondGrid {
+    padding: 2rem;
+  }
+
+  .bookContainer {
+    height: 24rem;
+  }
+}
+
+/* BELOW 865px */
+@media (max-width: 54.0625em) {
+  .grid3cols {
+    grid-template-columns: 1fr;
+  }
+
+  .bookContainer {
+    height: 22rem;
+  }
+
+  .titlecontainer h3 {
+    font-size: 1.4rem;
+  }
+
+  .btna {
+    font-size: 1.2rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* BELOW 768px (Tablet portrait) */
+@media (max-width: 48em) {
+  .firstGrid {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+
+  .diviconnav {
+    justify-content: center;
+    font-size: 1.3rem;
+    gap: 1rem;
+  }
+
+  .icon {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .pagination {
+    padding-top: 1.5rem;
+  }
+
+  .btn {
+    font-size: 1.2rem;
+    padding: 0.6rem 1.6rem;
+  }
+}
+
+/* BELOW 559px */
+@media (max-width: 34.9375em) {
+  .bookCard {
+    padding: 1.2rem;
+  }
+
+  .btna {
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .bookActions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .grid2div {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+}
+
+/* BELOW 455px (Small mobile devices) */
+@media (max-width: 28.4375em) {
+  .firstGrid {
+    padding: 1rem;
+  }
+
+  .bookContainer {
+    height: 20rem;
+  }
+
+  .bookImage {
+    object-fit: contain;
+  }
+
+  .headindContainer h2 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .bookCard {
+    margin-bottom: 2rem;
+  }
+
+  .titlecontainer h3 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .diviconnav {
+    font-size: 1.2rem;
+  }
+
+  .pagination {
+    padding: 1rem 0;
+  }
+}
