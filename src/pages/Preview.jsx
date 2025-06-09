@@ -54,18 +54,20 @@ function Preview() {
 
           try {
             // Try direct fetch
-            console.log("Attempting direct fetch:", textUrl);
-            const directResponse = await fetch(textUrl, {
-              redirect: "follow",
-            });
+            // Always use proxy fetch to avoid CORS
+            console.log("Using proxy fetch for:", textUrl);
+            const proxyUrl =
+              "http://localhost:5000/proxy?url=" + encodeURIComponent(textUrl);
 
-            if (directResponse.ok) {
-              const text = await directResponse.text();
-              setContent(
-                text.slice(0, 5000) + (text.length > 5000 ? "..." : "")
+            const proxyResponse = await fetch(proxyUrl);
+            if (!proxyResponse.ok) {
+              throw new Error(
+                `Proxy failed with status: ${proxyResponse.status}`
               );
-              return;
             }
+
+            const text = await proxyResponse.text();
+            setContent(text.slice(0, 5000) + (text.length > 5000 ? "..." : ""));
           } catch (err) {
             console.warn("Direct fetch failed, falling back to proxy");
           }

@@ -1,4 +1,7 @@
+// const BASE_URL = "https://gutendex.com/books";
 const BASE_URL = "https://gutendex.com/books";
+
+// const BASE_URL = "https://www.googleapis.com/books/v1/volumes?q=subject:GENRE";
 
 // const BASE_URL = "https://gutendex.com/books/?ids=BOOK_ID";
 
@@ -17,7 +20,7 @@ export const GENRES = [
 
 export async function fetchBookByGenre(genre) {
   try {
-    const response = await fetch(`${BASE_URL}?topic=${genre}`);
+    const response = await fetch(`${BASE_URL}?search=${genre}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
