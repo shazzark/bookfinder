@@ -53,11 +53,9 @@ function Preview() {
           }
 
           try {
-            // Try direct fetch
-            // Always use proxy fetch to avoid CORS
-            console.log("Using proxy fetch for:", textUrl);
             const proxyUrl =
-              "http://localhost:5000/proxy?url=" + encodeURIComponent(textUrl);
+              "https://bookfinder-proxy.onrender.com/proxy?url=" +
+              encodeURIComponent(textUrl);
 
             const proxyResponse = await fetch(proxyUrl);
             if (!proxyResponse.ok) {
@@ -69,24 +67,9 @@ function Preview() {
             const text = await proxyResponse.text();
             setContent(text.slice(0, 5000) + (text.length > 5000 ? "..." : ""));
           } catch (err) {
-            console.warn("Direct fetch failed, falling back to proxy");
+            console.error("Failed to fetch via proxy:", err);
+            setError("Could not load book content.");
           }
-
-          // Use proxy as fallback
-          console.log("Trying proxy fetch...");
-          const proxyUrl =
-            "http://localhost:5000/proxy?url=" + encodeURIComponent(textUrl);
-
-          const proxyResponse = await fetch(proxyUrl);
-
-          if (!proxyResponse.ok) {
-            throw new Error(
-              `Proxy failed with status: ${proxyResponse.status}`
-            );
-          }
-
-          const text = await proxyResponse.text();
-          setContent(text.slice(0, 5000) + (text.length > 5000 ? "..." : ""));
         } else {
           setError("No readable format available.");
         }
